@@ -33,7 +33,7 @@ public class TransacaoService {
      * @param transacao A transação.
      * @throws Exception Exceção para caso o usuário não seja encontrado, ou não esteja validado para efetuar a transação.
      */
-    public void criaTransacao(TransacaoDTO transacao) throws Exception {
+    public Transacao criaTransacao(TransacaoDTO transacao) throws Exception {
         Usuario pagador = this.usuarioService.findUsuarioById(transacao.pagadorId());
         Usuario recebedor = this.usuarioService.findUsuarioById(transacao.recebedorId());
 
@@ -51,6 +51,8 @@ public class TransacaoService {
         this.transacaoRepository.save(novaTransacao);
         this.usuarioService.saveUsuario(pagador);
         this.usuarioService.saveUsuario(recebedor);
+
+        return novaTransacao;
     }
 
 }
