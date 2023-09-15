@@ -2,11 +2,13 @@ package com.bank.services;
 
 import com.bank.domain.usuario.TipoUsuario;
 import com.bank.domain.usuario.Usuario;
+import com.bank.dtos.UsuarioDTO;
 import com.bank.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Componente de serviço onde contém algumas lógicas do banco, e injetando as dependências.
@@ -55,5 +57,26 @@ public class UsuarioService {
      */
     public void saveUsuario(Usuario usuario) {
         this.usuarioRepository.save(usuario);
+    }
+
+    /**
+     * Método para criar um usuário através de um usuário DTO, nele cria uma instância de Usuário pelas informações do DTO.
+     *
+     * @param usuarioDTO O usuárioDTO.
+     * @return O usuário da classe Usuário.
+     */
+    public Usuario createUsuario(UsuarioDTO usuarioDTO) {
+        Usuario novoUsuario = new Usuario(usuarioDTO);
+        this.saveUsuario(novoUsuario);
+        return novoUsuario;
+    }
+
+    /**
+     * Método para buscar todos os Usuários existentes.
+     *
+     * @return Uma lista de usuários.
+     */
+    public List<Usuario> getAllUsuarios() {
+        return this.usuarioRepository.findAll();
     }
 }

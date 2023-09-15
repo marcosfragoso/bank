@@ -1,10 +1,9 @@
 package com.bank.domain.usuario;
 
+import com.bank.dtos.UsuarioDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
 import java.math.BigDecimal;
 
 /**
@@ -18,6 +17,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Usuario {
     /**
@@ -64,5 +64,20 @@ public class Usuario {
      */
     @Enumerated(EnumType.STRING)
     private TipoUsuario tipoUsuario;
+
+    /**
+     * Construtor de Usuário que recebe um UsuárioDTO e repassa todas as informações para Usuário.
+     *
+     * @param usuarioDTO O usuárioDTO.
+     */
+    public Usuario(UsuarioDTO usuarioDTO) {
+        this.nome = usuarioDTO.nome();
+        this.sobrenome = usuarioDTO.sobrenome();
+        this.cpf = usuarioDTO.cpf();
+        this.email = usuarioDTO.email();
+        this.saldo = usuarioDTO.saldo();
+        this.tipoUsuario = usuarioDTO.tipoUsuario();
+        this.senha = usuarioDTO.senha();
+    }
 
 }
