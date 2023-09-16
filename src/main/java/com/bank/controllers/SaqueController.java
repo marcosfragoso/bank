@@ -10,9 +10,18 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+/**
+ * Controllador de Saque que lida com solicitações http e retorna os dados em formato JSON.
+ * Anotation @RequestMapping é usada para mapear uma url específica pro controlador, neste caso /saques.
+ */
 @RestController
 @RequestMapping("/saques")
 public class SaqueController {
+
+    /**
+     * Anotation @Autowired injeta as dependências em seu serviço com acesso ao saqueService.
+     */
     @Autowired
     private SaqueService saqueService;
 
