@@ -6,10 +6,9 @@ import com.bank.services.SaqueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/saques")
@@ -29,5 +28,16 @@ public class SaqueController {
     public ResponseEntity<Saque> createSaque(@RequestBody SaqueDTO saqueDTO) throws Exception {
         Saque novoSaque = this.saqueService.criaSaque(saqueDTO);
         return new ResponseEntity<>(novoSaque, HttpStatus.OK);
+    }
+
+    /**
+     * Método que mapeia as solicitações GET e lista de todos os saques da url /saques.
+     *
+     * @return Um ResponseEntity contendo a lista de saques e o status (200 = ok).
+     */
+    @GetMapping
+    public ResponseEntity<List<Saque>> getAllSaques() {
+        List<Saque> saques = this.saqueService.getAllSaques();
+        return new ResponseEntity<>(saques, HttpStatus.OK);
     }
 }

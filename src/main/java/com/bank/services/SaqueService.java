@@ -1,6 +1,7 @@
 package com.bank.services;
 
 import com.bank.domain.saque.Saque;
+import com.bank.domain.transacao.Transacao;
 import com.bank.domain.usuario.Usuario;
 import com.bank.dtos.SaqueDTO;
 import com.bank.repositories.SaqueRepository;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Componente de serviço onde contém algumas lógicas do banco, e injetando as dependências.
@@ -49,5 +51,14 @@ public class SaqueService {
         this.usuarioService.saveUsuario(usuario);
 
         return novoSaque;
+    }
+
+    /**
+     * Método para buscar todos os saques existentes.
+     *
+     * @return Uma lista de saques.
+     */
+    public List<Saque> getAllSaques() {
+        return this.saqueRepository.findAll();
     }
 }

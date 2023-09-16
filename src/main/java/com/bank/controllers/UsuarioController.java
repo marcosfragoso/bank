@@ -42,7 +42,7 @@ public class UsuarioController {
      * @return Um ResponseEntity contendo a lista de usuários e o status (200 = ok).
      */
     @GetMapping
-    public ResponseEntity<List<Usuario>> gettAllUsuarios() {
+    public ResponseEntity<List<Usuario>> getAllUsuarios() {
         List<Usuario> usuarios = this.usuarioService.getAllUsuarios();
         return new ResponseEntity<>(usuarios, HttpStatus.OK);
     }

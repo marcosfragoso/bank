@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 /**
@@ -54,6 +55,15 @@ public class TransacaoService {
         this.usuarioService.saveUsuario(recebedor);
 
         return novaTransacao;
+    }
+
+    /**
+     * Método para buscar todas as Transações existentes.
+     *
+     * @return Uma lista de transações.
+     */
+    public List<Transacao> getAllTransacoes() {
+        return this.transacaoRepository.findAll();
     }
 
 }

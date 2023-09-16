@@ -1,15 +1,15 @@
 package com.bank.controllers;
 
 import com.bank.domain.transacao.Transacao;
+import com.bank.domain.usuario.Usuario;
 import com.bank.dtos.TransacaoDTO;
 import com.bank.services.TransacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 /**
@@ -37,5 +37,16 @@ public class TransacaoController {
     public ResponseEntity<Transacao> createTransacao(@RequestBody TransacaoDTO transacao) throws Exception {
         Transacao novaTransacao = this.transacaoService.criaTransacao(transacao);
         return new ResponseEntity<>(novaTransacao, HttpStatus.OK);
+    }
+
+    /**
+     * Método que mapeia as solicitações GET e lista todas as transações da url /transacoes.
+     *
+     * @return Um ResponseEntity contendo a lista de transacoes e o status (200 = ok).
+     */
+    @GetMapping
+    public ResponseEntity<List<Transacao>> getAllTransacoes() {
+        List<Transacao> transacoes = this.transacaoService.getAllTransacoes();
+        return new ResponseEntity<>(transacoes, HttpStatus.OK);
     }
 }
