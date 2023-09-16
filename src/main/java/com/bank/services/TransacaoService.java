@@ -30,7 +30,8 @@ public class TransacaoService {
     /**
      * Método para criar uma transação através de um DTO de uma transação, que é uma forma simplificada de transação.
      *
-     * @param transacao A transação.
+     * @return A transação criada.
+     * @param transacao A transaçãoDTO.
      * @throws Exception Exceção para caso o usuário não seja encontrado, ou não esteja validado para efetuar a transação.
      */
     public Transacao criaTransacao(TransacaoDTO transacao) throws Exception {

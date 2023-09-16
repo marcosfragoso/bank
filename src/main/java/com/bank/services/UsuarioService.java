@@ -39,6 +39,12 @@ public class UsuarioService {
         }
     }
 
+    public void validaSaque(Usuario usuario, BigDecimal valor) throws Exception {
+        if (usuario.getSaldo().compareTo(valor) < 0) {
+            throw new Exception("Saldo insuficiente.");
+        }
+    }
+
     /**
      * Método para buscar um usuário pelo id.
      *
