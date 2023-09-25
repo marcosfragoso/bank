@@ -47,6 +47,12 @@ public class UsuarioController {
         return new ResponseEntity<>(usuarios, HttpStatus.OK);
     }
 
+    /**
+     * Método que mapeia solicitação GET e lista um usuário pelo id passado
+     *
+     * @param id O id do usuário.
+     * @return O objeto usuário.
+     */
     @GetMapping(value = "/{id}")
     public ResponseEntity<Usuario> findById(@PathVariable Long id){
         Usuario obj = usuarioService.findById(id);

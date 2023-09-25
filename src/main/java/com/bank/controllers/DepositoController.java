@@ -48,6 +48,12 @@ public class DepositoController {
         return new ResponseEntity<>(depositos, HttpStatus.OK);
     }
 
+    /**
+     * Método que mapeia solicitação GET e lista um depósito pelo id passado
+     *
+     * @param id O id do depósito.
+     * @return O objeto depósito.
+     */
     @GetMapping(value = "/{id}")
     public ResponseEntity<Deposito> findById(@PathVariable Long id){
         Deposito obj = depositoService.findById(id);

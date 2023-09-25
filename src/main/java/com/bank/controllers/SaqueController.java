@@ -50,6 +50,12 @@ public class SaqueController {
         return new ResponseEntity<>(saques, HttpStatus.OK);
     }
 
+    /**
+     * Método que mapeia solicitação GET e lista um saque pelo id passado
+     *
+     * @param id O id do saque.
+     * @return O objeto saque.
+     */
     @GetMapping(value = "/{id}")
     public ResponseEntity<Saque> findById(@PathVariable Long id){
         Saque obj = saqueService.findById(id);

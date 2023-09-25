@@ -67,6 +67,12 @@ public class TransacaoService {
         return this.transacaoRepository.findAll();
     }
 
+    /**
+     * Método para buscar uma transação pelo id.
+     *
+     * @param id O id da transação.
+     * @return O objeto transação.
+     */
     public Transacao findById(Long id) {
         Optional<Transacao> obj = transacaoRepository.findById(id);
         return obj.get();

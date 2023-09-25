@@ -63,6 +63,12 @@ public class SaqueService {
         return this.saqueRepository.findAll();
     }
 
+    /**
+     * Método para buscar um saque pelo id.
+     *
+     * @param id O id do saque.
+     * @return O objeto saque.
+     */
     public Saque findById(Long id) {
         Optional<Saque> obj = saqueRepository.findById(id);
         return obj.get();

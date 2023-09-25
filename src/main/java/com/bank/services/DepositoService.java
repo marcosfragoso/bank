@@ -60,6 +60,12 @@ public class DepositoService {
         return this.depositoRepository.findAll();
     }
 
+    /**
+     * Método para buscar um deposito pelo id.
+     *
+     * @param id O id do deposito.
+     * @return O objeto deposito.
+     */
     public Deposito findById(Long id) {
         Optional<Deposito> obj = depositoRepository.findById(id);
         return obj.get();

@@ -50,6 +50,12 @@ public class TransacaoController {
         return new ResponseEntity<>(transacoes, HttpStatus.OK);
     }
 
+    /**
+     * Método que mapeia solicitação GET e lista uma transação pelo id passado
+     *
+     * @param id O id da transação.
+     * @return O objeto transação.
+     */
     @GetMapping(value = "/{id}")
     public ResponseEntity<Transacao> findById(@PathVariable Long id){
         Transacao obj = transacaoService.findById(id);

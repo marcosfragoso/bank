@@ -87,6 +87,12 @@ public class UsuarioService {
         return this.usuarioRepository.findAll();
     }
 
+    /**
+     * Método para buscar um usuário pelo id.
+     *
+     * @param id O id do usuário.
+     * @return O objeto usuário.
+     */
     public Usuario findById(Long id) {
         Optional<Usuario> obj = usuarioRepository.findById(id);
         return obj.get();
