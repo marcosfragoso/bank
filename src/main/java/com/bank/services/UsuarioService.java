@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Componente de serviço onde contém algumas lógicas do banco, e injetando as dependências.
@@ -85,4 +86,10 @@ public class UsuarioService {
     public List<Usuario> getAllUsuarios() {
         return this.usuarioRepository.findAll();
     }
+
+    public Usuario findById(Long id) {
+        Optional<Usuario> obj = usuarioRepository.findById(id);
+        return obj.get();
+    }
+
 }

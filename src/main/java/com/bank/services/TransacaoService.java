@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -64,6 +65,11 @@ public class TransacaoService {
      */
     public List<Transacao> getAllTransacoes() {
         return this.transacaoRepository.findAll();
+    }
+
+    public Transacao findById(Long id) {
+        Optional<Transacao> obj = transacaoRepository.findById(id);
+        return obj.get();
     }
 
 }

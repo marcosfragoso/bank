@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Componente de serviço onde contém algumas lógicas do banco, e injetando as dependências.
@@ -57,5 +58,10 @@ public class DepositoService {
      */
     public List<Deposito> getAllDepositos() {
         return this.depositoRepository.findAll();
+    }
+
+    public Deposito findById(Long id) {
+        Optional<Deposito> obj = depositoRepository.findById(id);
+        return obj.get();
     }
 }

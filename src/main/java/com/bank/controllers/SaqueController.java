@@ -49,4 +49,10 @@ public class SaqueController {
         List<Saque> saques = this.saqueService.getAllSaques();
         return new ResponseEntity<>(saques, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Saque> findById(@PathVariable Long id){
+        Saque obj = saqueService.findById(id);
+        return ResponseEntity.ok().body(obj);
+    }
 }

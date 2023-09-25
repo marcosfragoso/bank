@@ -46,4 +46,10 @@ public class UsuarioController {
         List<Usuario> usuarios = this.usuarioService.getAllUsuarios();
         return new ResponseEntity<>(usuarios, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Usuario> findById(@PathVariable Long id){
+        Usuario obj = usuarioService.findById(id);
+        return ResponseEntity.ok().body(obj);
+    }
 }

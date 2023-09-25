@@ -49,4 +49,10 @@ public class TransacaoController {
         List<Transacao> transacoes = this.transacaoService.getAllTransacoes();
         return new ResponseEntity<>(transacoes, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Transacao> findById(@PathVariable Long id){
+        Transacao obj = transacaoService.findById(id);
+        return ResponseEntity.ok().body(obj);
+    }
 }

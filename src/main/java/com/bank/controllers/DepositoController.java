@@ -48,4 +48,10 @@ public class DepositoController {
         return new ResponseEntity<>(depositos, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Deposito> findById(@PathVariable Long id){
+        Deposito obj = depositoService.findById(id);
+        return ResponseEntity.ok().body(obj);
+    }
+
 }
